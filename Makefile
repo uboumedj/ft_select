@@ -18,9 +18,10 @@ CFLAGS = -Wall -Wextra -Werror
 
 LIBFT = libft
 
-SRCS = 
+SRCS = srcs/main.c srcs/errors.c srcs/initialise_terminal.c \
+		srcs/initialise_list.c srcs/free.c
 
-INC = ft_seelct.h
+INC = ft_select.h
 
 OBJS = $(SRCS:.c=.o)
 
@@ -30,7 +31,7 @@ all: $(NAME)
 
 $(NAME): $(OBJS)
 	@make -C $(LIBFT)
-	@ $(CC) $(CFLAGS) -o $(NAME) $(SRCS) -Iinclude $(LIBFT)/libft.a
+	@ $(CC) $(CFLAGS) -o $(NAME) $(SRCS) -Iinclude $(LIBFT)/libft.a -ltermcap
 	@echo "\033[1;34mft_select\033[1;32m...compiled\t✓\033[0m"
 
 clean:

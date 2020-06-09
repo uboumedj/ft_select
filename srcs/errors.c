@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   errors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: uboumedj <uboumedj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,15 +12,13 @@
 
 #include "../inc/ft_select.h"
 
-int		main(int argc, char **argv)
+void	error_message(char *message)
 {
-	t_terminal term;
+	ft_putstr_fd(message, 2);
+	exit(1);
+}
 
-	if (argc < 2)
-		error_message(USAGE);
-	initialise_terminal(&term);
-	initialise_list(argv, &term);
-	tputs(tgetstr("ve", NULL), 1, putchar_err_output);
-	free_list(term.list);
-	return (0);
+int		putchar_err_output(int c)
+{
+	return (write(2, &c, 1));
 }

@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: uboumedj <uboumedj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,15 +12,16 @@
 
 #include "../inc/ft_select.h"
 
-int		main(int argc, char **argv)
+void	free_list(t_lst *list)
 {
-	t_terminal term;
+	t_lst *next_item;
 
-	if (argc < 2)
-		error_message(USAGE);
-	initialise_terminal(&term);
-	initialise_list(argv, &term);
-	tputs(tgetstr("ve", NULL), 1, putchar_err_output);
-	free_list(term.list);
-	return (0);
+	while (list)
+	{
+		next_item = list->next;
+		if (list->name)
+			ft_strdel(&(list->name));
+		free(list);
+		list = next_item;
+	}
 }

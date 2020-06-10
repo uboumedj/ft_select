@@ -19,7 +19,8 @@ CFLAGS = -Wall -Wextra -Werror
 LIBFT = libft
 
 SRCS = srcs/main.c srcs/errors.c srcs/initialise_terminal.c \
-		srcs/initialise_list.c srcs/free.c
+		srcs/initialise_list.c srcs/free.c srcs/initialise_signals.c \
+		srcs/initialise_display.c
 
 INC = ft_select.h
 

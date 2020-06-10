@@ -30,6 +30,7 @@
 # define GET_ATTR_ERR "error: Unable to get standard input attributes\n"
 # define SET_ATTR_ERR "error: Unable to set standard input attributes\n"
 # define MEM_ERR "error: Unable to allocate memory!\n"
+# define CLOSE_FD_ERR "error: Unable to close file descriptor\n"
 
 typedef struct			s_lst
 {
@@ -46,6 +47,10 @@ typedef struct			s_terminal
 	int					fd;
 	char				term_desc[4096];
 	struct termios		termios_p;
+	int					number_of_elements;
+	int					max_name_len;
+	int					number_of_cols;
+	int					number_of_rows;
 }						t_terminal;
 
 /*
@@ -67,10 +72,27 @@ t_lst					*create_item(char *name);
 void					add_item_to_list(t_lst *item, t_terminal *term);
 
 /*
+** Initialise display
+*/
+
+void					initialise_display(t_terminal *term);
+void					get_window_info(t_terminal *term);
+void					get_list_info(t_terminal *term);
+
+/*
+** Signals
+*/
+
+void					stop_signal(int signal_value);
+void					quit_signal(int signal_value);
+void					initialise_signals(void);
+
+/*
 ** Other functions
 */
 
 int						putchar_err_output(int c);
+t_terminal				*static_signal_handler(t_terminal *term);
 void					error_message(char *message);
 void					free_list(t_lst *list);
 

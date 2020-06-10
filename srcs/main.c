@@ -20,6 +20,10 @@ int		main(int argc, char **argv)
 		error_message(USAGE);
 	initialise_terminal(&term);
 	initialise_list(argv, &term);
+	initialise_signals();
+	initialise_display(&term);
+	static_signal_handler(&term);
+	tputs(tgetstr("cl", NULL), 1, putchar_err_output);
 	tputs(tgetstr("ve", NULL), 1, putchar_err_output);
 	free_list(term.list);
 	return (0);

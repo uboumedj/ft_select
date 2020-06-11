@@ -20,7 +20,8 @@ LIBFT = libft
 
 SRCS = srcs/main.c srcs/errors.c srcs/initialise_terminal.c \
 		srcs/initialise_list.c srcs/free.c srcs/initialise_signals.c \
-		srcs/initialise_display.c srcs/display.c srcs/keys.c srcs/keys_2.c
+		srcs/initialise_display.c srcs/display.c srcs/keys.c srcs/keys_2.c \
+		srcs/initialise_signals_2.c
 
 INC = ft_select.h
 

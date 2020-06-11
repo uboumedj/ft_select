@@ -112,6 +112,8 @@ int						calc_item_columns_needed(t_terminal *term);
 
 void					stop_signal(int signal_value);
 void					quit_signal(int signal_value);
+void					winsize_change_signal(int signal_value);
+void					resume_signal(int signal_value);
 void					initialise_signals(void);
 
 /*

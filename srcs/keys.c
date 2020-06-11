@@ -53,7 +53,6 @@ void		return_key(t_terminal *term)
 		curr = curr->next;
 	}
 	free_list(term->list);
-	ft_putchar('\n');
 	exit(0);
 }
 

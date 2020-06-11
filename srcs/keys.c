@@ -57,6 +57,8 @@ void		return_key(t_terminal *term)
 		curr = curr->next;
 	}
 	free_list(term->list);
+	if (close(term->fd) < 0)
+		error_message(CLOSE_FD_ERR);
 	exit(0);
 }
 

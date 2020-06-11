@@ -6,7 +6,7 @@
 /*   By: uboumedj <uboumedj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/09 18:32:20 by uboumedj          #+#    #+#             */
-/*   Updated: 2002/06/10 17:03:53 by uboumedj         ###   ########.fr       */
+/*   Updated: 2020/06/10 17:03:53 by uboumedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	initialise_list(char **argv, t_terminal *term)
 	term->list = NULL;
 	while (argv[i])
 	{
-		new_item = create_item(argv[i]);
+		new_item = create_item(argv, i);
 		if (!new_item)
 			error_message(MEM_ERR);
 		add_item_to_list(new_item, term);
@@ -29,19 +29,20 @@ void	initialise_list(char **argv, t_terminal *term)
 	}
 }
 
-t_lst	*create_item(char *name)
+t_lst	*create_item(char **arguments, int index)
 {
 	t_lst	*new;
 
 	if (!(new = malloc(sizeof(t_lst))))
 		return (NULL);
-	new->name = ft_strdup(name);
+	new->name = ft_strdup(arguments[index]);
 	if (!(new->name))
 		return (NULL);
-	new->name_len = ft_strlen(name);
+	new->name_len = ft_strlen(arguments[index]);
 	new->next = NULL;
 	new->prev = NULL;
 	new->is_selected = 0;
+	new->is_current = (index == 1) ? 1 : 0;
 	return (new);
 }
 

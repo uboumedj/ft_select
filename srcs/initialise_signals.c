@@ -32,11 +32,7 @@ void		stop_signal(int signal_value)
 	term = static_signal_handler(term);
 	argp[0] = term->termios_p.c_cc[VSUSP];
 	argp[1] = 0;
-	term->termios_p.c_lflag |= ICANON;
-	term->termios_p.c_lflag |= ECHO;
-	tcsetattr(term->fd, TCSANOW, &(term->termios_p));
-	tputs(tgetstr("cl", NULL), 1, putchar_err_output);
-	tputs(tgetstr("ve", NULL), 1, putchar_err_output);
+	clear_terminal(term);
 	signal(SIGTSTP, SIG_DFL);
 	ioctl(0, TIOCSTI, argp);
 }

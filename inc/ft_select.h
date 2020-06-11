@@ -50,6 +50,8 @@
 # define BACKSPACE 127
 # define UP_ARROW 4283163
 # define DOWN_ARROW 4348699
+# define RIGHT_ARROW 4414235
+# define LEFT_ARROW	4479771
 # define DELETE 2117294875
 
 /*
@@ -138,6 +140,8 @@ t_lst					*find_current_item(t_lst *list);
 void					delete_key(t_terminal *term);
 void					up_key(t_terminal *term);
 void					down_key(t_terminal *term);
+void					left_key(t_terminal *term);
+void					right_key(t_terminal *term);
 
 /*
 ** Other functions

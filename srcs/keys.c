@@ -35,6 +35,10 @@ void		get_key_press(t_terminal *term)
 		up_key(term);
 	if (*(unsigned int *)buffer == DOWN_ARROW)
 		down_key(term);
+	if (*(unsigned int *)buffer == LEFT_ARROW)
+		left_key(term);
+	if (*(unsigned int *)buffer == RIGHT_ARROW)
+		right_key(term);
 }
 
 void		return_key(t_terminal *term)
